@@ -1,9 +1,7 @@
 const express = require("express");
-const cors = require("cors");
 const authRouter = express.Router();
 const { passport, jwtSign } = require("../auth/auth.js");
-authRouter.use(cors());
-authRouter.options("*", cors());
+
 // '/auth/signup' route
 authRouter.post("/signup", async (req, res, next) => {
   passport.authenticate("signup", async (err, user) => {

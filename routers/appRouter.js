@@ -1,13 +1,9 @@
 const express = require("express");
-const cors = require("cors");
 const appRouter = express.Router();
 const { passport } = require("../auth/auth");
 const { Tweet, User, Profile, Image } = require("../models");
 const cloudinary = require("../cloudinary");
 const multer = require("multer");
-
-appRouter.use(cors());
-appRouter.options("*", cors()); // Enable pre-flight across-the-board
 
 appRouter.get(
   "/protected",
