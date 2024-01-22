@@ -5,6 +5,7 @@ const profileModel = require("./profile");
 const bcrypt = require("bcryptjs");
 const imageModel = require("./image");
 const dotenv = require("dotenv");
+const pg = require("pg");
 
 dotenv.config();
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT } =
