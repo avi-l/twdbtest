@@ -16,25 +16,19 @@ const app = express();
 
 app.use(logger("dev"));
 const corsOptions = {
-  origin: "*",
+  origin: "https://twclienttest.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors()); // Enable pre-flight across-the-board
 
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
-// app.use(
-//   cors({
-//     origin: "twclienttest.vercel.app",
-//   })
-// );
 
 app.use(bodyParser.json());
 app.use("/auth", authRouter);
