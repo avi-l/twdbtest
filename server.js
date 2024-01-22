@@ -16,6 +16,8 @@ const app = express();
 
 app.use(logger("dev"));
 app.use(cors());
+app.options("*", cors()); // Enable pre-flight across-the-board
+
 app.use(
   bodyParser.urlencoded({
     extended: true,
