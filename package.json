@@ -4,7 +4,6 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "preinstall": "npm install pg@8.11.3",
     "start": "node server.js",
     "db:init": "dropdb --if-exists twitter_clone_db && createdb twitter_clone_db",
     "db:reset": "node ./scripts/resetDb.js",
