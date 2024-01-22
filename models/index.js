@@ -23,6 +23,7 @@ const db = new Sequelize({
       rejectUnauthorized: false,
     },
   },
+  logging: console.log,
 });
 // const db = new Sequelize((process.env.POSTGRES_URL || 'postgres://localhost:5432/twitter_clone_db'),{
 //   database: 'twitter_clone_db',
@@ -32,6 +33,17 @@ const db = new Sequelize({
 //     database: 'twitter_clone_db',
 //     dialect: 'postgres'
 //   })
+
+const initDb = async () => {
+  try {
+    await db.authenticate();
+    console.log("Connection has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+};
+
+initDb();
 
 const User = UserModel(db, Sequelize);
 
