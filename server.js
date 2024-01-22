@@ -15,17 +15,17 @@ const PORT = process.env.PORT || 4567;
 const app = express();
 
 app.use(logger("dev"));
-app.use(cors());
+// app.use(cors());
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
-// app.use(
-//   cors({
-//     origin: "twclienttest.vercel.app/",
-//   })
-// );
+app.use(
+  cors({
+    origin: "twclienttest.vercel.app",
+  })
+);
 
 app.use(bodyParser.json());
 app.use("/auth", authRouter);
