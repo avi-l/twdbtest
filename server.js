@@ -35,14 +35,14 @@ app.use("/auth", authRouter);
 app.use("/app", authorized, appRouter);
 app.use(passport.initialize());
 
-app.get("/", async (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname, "./client/build", "index.html"));
-    // res.json({message: 'Welcome Mike to Express Auth App!'})
-  } catch (e) {
-    res.status(e.status).json({ message: e.status });
-  }
-});
+// app.get("/", async (req, res) => {
+//   try {
+//     res.sendFile(path.join(__dirname, "./client/build", "index.html"));
+//     // res.json({message: 'Welcome Mike to Express Auth App!'})
+//   } catch (e) {
+//     res.status(e.status).json({ message: e.status });
+//   }
+// });
 
 app.get("/error", function (req, res) {
   res.render("error.html");
