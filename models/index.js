@@ -1,13 +1,13 @@
-const Sequelize = require("sequelize");
-const UserModel = require("./user");
-const TweetModel = require("./tweet");
-const profileModel = require("./profile");
-const bcrypt = require("bcryptjs");
-const imageModel = require("./image");
-const dotenv = require("dotenv");
-const pg = require("pg");
+import Sequelize from "sequelize";
+import UserModel from "./user";
+import TweetModel from "./tweet";
+import profileModel from "./profile";
+import { hash } from "bcryptjs";
+import imageModel from "./image";
+import { config } from "dotenv";
+import pg from "pg";
 
-dotenv.config();
+config();
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT } =
   process.env || {};
 
@@ -50,7 +50,7 @@ initDb();
 const User = UserModel(db, Sequelize);
 
 User.beforeCreate(async (user, options) => {
-  const hashedPassword = await bcrypt.hash(user.password, 12);
+  const hashedPassword = await hash(user.password, 12);
   user.password = hashedPassword;
 });
 
@@ -75,7 +75,7 @@ syncDatabase().catch((error) =>
   console.error("Error syncing database:", error)
 );
 
-module.exports = {
+export default {
   db,
   User,
   Tweet,
