@@ -1,0 +1,108 @@
+.App {
+  width: 1028px;
+  margin: 0 auto;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.login-form {
+  padding: 15px;
+  width: 400px;
+  border: 1px #eee solid;
+}
+
+.form label {
+  font-size: 20px;
+}
+
+.form input {
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-radius: 3px;
+  padding: 5px;
+  display: block;
+}
+
+.form button {
+  font-size: 18px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5%;
+}
+
+.errorMessage {
+  border: red 1px solid;
+  background-color: #FAE2E2;
+  padding: 10px;
+  position: absolute;
+  top: 60px;
+  font-weight: bolder;
+  font-size: large;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.nav-section {
+  min-width: 250px;
+  display: flex;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-section button {
+  font-weight: bold;
+  text-decoration: none;
+  font-size: larger;
+}
+.nav-section button:hover {
+  color: white;
+}
+
+nav button, nav a {
+  color: black;
+  font-size: larger;
+}
+
+nav button:hover, nav a:hover {
+  background-color: #eee;
+}
+
+nav button:visited, nav a:visited {
+  background-color: #ccc;
+}
+
+nav button:hover {
+  cursor: pointer;
+}
+.sign-out-btn {
+  margin-left: 25pc;
+
+}
+.twitter-logo-img {
+  width: 7pc;
+  height: auto;
+  left: 10px;
+  position: fixed;
+
+}
