@@ -17,7 +17,7 @@ const app = express();
 app.use(logger("dev"));
 const corsOptions = {
   origin: "https://twclienttest.vercel.app",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   credentials: true,
   optionsSuccessStatus: 204,
 };
