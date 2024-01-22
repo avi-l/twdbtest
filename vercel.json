@@ -1,16 +1,9 @@
 {
   "version": 2,
-  "engines": {
-    "node": "18"
-  },
   "builds": [
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "client/build/static",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
