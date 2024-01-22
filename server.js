@@ -21,11 +21,11 @@ app.use(
     extended: true,
   })
 );
-app.use(
-  cors({
-    origin: "twclienttest.vercel.app",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "twclienttest.vercel.app/",
+//   })
+// );
 
 app.use(bodyParser.json());
 app.use("/auth", authRouter);

@@ -1,7 +1,7 @@
 const express = require("express");
 const appRouter = express.Router();
 const { passport } = require("../auth/auth");
-const { Tweet, User, Profile, Image } = require("../models").default;
+const { Tweet, User, Profile, Image } = require("../models");
 const cloudinary = require("../cloudinary");
 const multer = require("multer");
 

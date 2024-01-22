@@ -1,13 +1,12 @@
-import Sequelize from "sequelize";
-import UserModel from "./user";
-import TweetModel from "./tweet";
-import profileModel from "./profile";
-import { hash } from "bcryptjs";
-import imageModel from "./image";
-import { config } from "dotenv";
-import pg from "pg";
+const Sequelize = require("sequelize");
+const UserModel = require("./user");
+const TweetModel = require("./tweet");
+const profileModel = require("./profile");
+const bcrypt = require("bcryptjs");
+const imageModel = require("./image");
+const dotenv = require("dotenv");
 
-config();
+dotenv.config();
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT } =
   process.env || {};
 
@@ -18,7 +17,6 @@ const db = new Sequelize({
   host: DB_HOST,
   port: DB_PORT ? parseInt(DB_PORT, 10) : 5432,
   dialect: "postgres",
-  dialectModule: pg,
   dialectOptions: {
     ssl: {
       require: true,
@@ -36,21 +34,10 @@ const db = new Sequelize({
 //     dialect: 'postgres'
 //   })
 
-const initDb = async () => {
-  try {
-    await db.authenticate();
-    console.log("Connection has been established successfully.");
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
-};
-
-initDb();
-
 const User = UserModel(db, Sequelize);
 
 User.beforeCreate(async (user, options) => {
-  const hashedPassword = await hash(user.password, 12);
+  const hashedPassword = await bcrypt.hash(user.password, 12);
   user.password = hashedPassword;
 });
 
@@ -75,7 +62,7 @@ syncDatabase().catch((error) =>
   console.error("Error syncing database:", error)
 );
 
-export default {
+module.exports = {
   db,
   User,
   Tweet,
