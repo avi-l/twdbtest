@@ -4,7 +4,6 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "build": "npm install",
     "start": "node server.js",
     "db:init": "dropdb --if-exists twitter_clone_db && createdb twitter_clone_db",
     "db:reset": "node ./scripts/resetDb.js",
