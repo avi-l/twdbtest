@@ -60,7 +60,7 @@ app.use((err, req, res, next) => {
 // }
 
 app.listen(PORT, () =>
-  console.log(`App is up and running listening on port ${PORT}`)
+  console.log(`App is up and running - listening on port ${PORT}`)
 );
 
 module.exports = app;
