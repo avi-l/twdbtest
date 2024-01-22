@@ -15,7 +15,14 @@ const PORT = process.env.PORT || 4567;
 const app = express();
 
 app.use(logger("dev"));
-app.use(cors());
+const corsOptions = {
+  origin: "https://twclienttest.vercel.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 app.options("*", cors()); // Enable pre-flight across-the-board
 
 app.use(
@@ -34,14 +41,14 @@ app.use("/auth", authRouter);
 app.use("/app", authorized, appRouter);
 app.use(passport.initialize());
 
-// app.get("/", async (req, res) => {
-//   try {
-//     res.sendFile(path.join(__dirname, "./client/build", "index.html"));
-//     // res.json({message: 'Welcome Mike to Express Auth App!'})
-//   } catch (e) {
-//     res.status(e.status).json({ message: e.status });
-//   }
-// });
+app.get("/", async (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "./client/build", "index.html"));
+    // res.json({message: 'Welcome Mike to Express Auth App!'})
+  } catch (e) {
+    res.status(e.status).json({ message: e.status });
+  }
+});
 
 app.get("/error", function (req, res) {
   res.render("error.html");
